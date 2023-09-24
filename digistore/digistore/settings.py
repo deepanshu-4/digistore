@@ -21,7 +21,7 @@ ENCRYPT_KEY=os.environ.get('ENCRYPT_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['digistorage.herokuapp.com','127.0.0.1','192.168.43.54']
+ALLOWED_HOSTS = ['digistore-pfrf.onrender.com','127.0.0.1','192.168.43.54']
 
 
 # Application definition
