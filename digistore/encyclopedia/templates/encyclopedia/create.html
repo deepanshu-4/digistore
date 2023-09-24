@@ -1,0 +1,32 @@
+{% extends "encyclopedia/layout.html" %}
+{% load static %}
+
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+                {% block body %}
+                {% if messages %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>
+                      {% for message in messages %}
+                        {{ message }}
+                        {% endfor %}  
+                    </strong>
+                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                         <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>                       
+                {% endif %}
+                <h1 > Create Page</h1>
+                <form action="{%url 'createpage'%}" method="POST">
+                 {% csrf_token %}
+                <label class="ml-2" >Title:</label><br>
+                <input type="text" class="form-control" style="width: 96%;" name="inpt" placeholder="Enter Title">
+                <label class="ml-1 mt-2"  >Content:</label><br>
+                <textarea style="padding:1%;height: 60vh;width: 96%;overflow: auto;" rows="4" cols="5" placeholder="Enter Content" name="area"></textarea>
+                <button class="btn btn-primary">Save</button>
+                </form>
+                {% endblock %}
+       

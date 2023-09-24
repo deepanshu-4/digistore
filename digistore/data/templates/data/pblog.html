@@ -1,0 +1,59 @@
+{% extends 'data/base.html' %}
+
+{% block content %}
+<div id="container">
+<a class="previous " href="{%url 'data:about' %}" >&laquo; Goback</a>
+ <label  class="text-center alert alert-warning">Create a folder to store songs</label>
+<br>
+   <form action="{%url 'data:paddfolder' %}"  id="fom">
+       
+        <input required name="tile">
+        <button class="btn btn-primary btn-md"> Create folder</button>
+    </form>
+
+
+ <br>
+ <br>
+ <div class="row row-cols-1 row-cols-md-2">
+    {% for post in posts %}
+    {% if y == post.guser %}
+    <div class="col mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">{{post.title}}</h4>
+          
+          <a href="{% url 'data:pdetail' post.id %}" class="btn btn-primary btn-md">playlist</a>
+
+          <form id="{{post.id}}"  class="d-inline">
+                            {%csrf_token%}
+                    <input type="submit" class="btn btn-danger" value="Delete"></a>
+          </form> 
+
+          <script type="text/javascript">
+              $(document).on('submit','#{{post.id}}',function(e){
+                e.preventDefault();
+
+                $.ajax({
+                  type:'POST',
+                  url:"{%url 'data:pdeletefolder' post.id%}",
+                  data:{
+                    csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                  },
+                  success: function(data){
+                    $("#container").replaceWith($("#container",$(data)));
+                  }
+                });
+              });
+          </script>
+
+          
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% comment %} <div >{{posts}}</div> {% endcomment %}
+ 
+  </div>
+</div>
+{% endblock %}

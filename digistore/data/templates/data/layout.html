@@ -1,0 +1,103 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<style>
+body{
+    width:100%;
+}
+.me {
+    margin-left: auto;
+    margin-top: 70px;
+}
+.ot{
+    display: block;
+    width: 155%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.form-control {
+    display: block;
+    width: 60%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.di{
+text-transform:capitalize;
+
+}
+.di h1{
+    color:red;
+}
+{% comment %} #mo {
+    animation: moving 19s infinite;
+}  {% endcomment %}
+#mo {
+  animation-name: moving;
+  animation-duration: 19s; 
+  animation-timing-function: ease-out; 
+  animation-delay: 0s;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: none;
+  animation-play-state: running; 
+}
+
+@keyframes moving {
+    0%   {transform: translateX(-10%);
+            color:red;
+            }
+    25%  {transform: translateY(25px);
+           color:orange; 
+                       }
+    50% {transform: translateX(10%);
+            color:green;
+            }
+    75% {transform: translateY(25px);}
+    100% {transform: translateX(-10%);}
+    {% comment %} from {}
+    to {transform: translateY(25px);
+        transform: translateX(158px);
+    } {% endcomment %}
+}
+</style>
+</head>
+
+
+
+
+
+<body>
+{%block body%}
+
+{% endblock %}
+
+{% comment %} <ul>
+{% for task in tasks%}
+<li>{{task}}</li>
+{% endfor %}
+
+</ul> {% endcomment %}
+</body>
+</html>

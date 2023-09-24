@@ -1,0 +1,64 @@
+{% extends 'data/base.html' %}
+
+{% block content %}
+
+<a class="previous " href="{%url 'data:pblog' %}" >&laquo; Goback</a>
+
+<form action="{%url 'data:addpdf' y %}" method="POST" enctype="multipart/form-data">
+       {% csrf_token %}
+        <input type="file" required name="file">
+        <button  class="btn btn-primary btn-md">Upload music</button>
+    </form>
+<hr>
+<br>
+
+    
+<table>
+<tr><label>Total music</label><td><span class="badge badge-success">{{ln}}</span></td></tr>
+  {% for p in photos %}	
+  {% if yid == p.post.guser %}
+    <div style="display:flex;">
+            <tr>  <td><a href="{{p.pdf.url}}" target="_blank">{{p.pdf}}</a></td>
+             <td><pre>     </pre></td>
+              <td> <form action="{%url 'data:listen' p.post.id p.id %}" method="POST" class="d-inline" target="_blank">
+                            {%csrf_token%}
+                    <input type="submit" class="btn btn-info" value="listen"></a>
+                    </form> 
+                   
+                   </td>    
+             
+             <td> <form action="{%url 'data:deletepdf' p.id%}" method="POST" class="d-inline">
+                            {%csrf_token%}
+                    <input type="submit" class="btn btn-danger" value="Delete"></a>
+                    </form> 
+                   
+                   </td> 
+               
+             </tr>    
+    </div>    
+    {% endif %}
+    {% endfor %}
+
+</table>
+
+      {% comment %} <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}"> 
+      <div style="display:inline-block;">
+       {% comment %} <img class="card-img-top" src="{{post.image.url}}" alt=""> 
+        <img height="200" class="img-responsive" src="{{p.images.url}}"
+          alt="First slide">
+      </div>    
+      {% comment %} </div> {% endcomment %}
+      <!--/First slide-->
+    <!--/.Slides-->
+    <!--Controls-->
+    {% comment %} <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+    <!--/.Controls-->
+  </div> {% endcomment %}
+  {% endblock %}

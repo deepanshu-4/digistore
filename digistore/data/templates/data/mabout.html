@@ -1,0 +1,72 @@
+{% extends "data/base.html" %}
+{% block content %}
+
+
+
+<div class="container mt-5">
+
+		 <a class="previous " href="{%url 'data:index' %}" >&laquo; Goback</a>
+		     <h2 class="text-center alert alert-danger">Hello {{imo}} ({{request.user}}) <a href={%url 'data:log_out'%}>Logout</a></h2>    <div class="con">	
+	<center>
+	<div class="cards">
+		  <div class="card-header">
+		    <h1>Gallery</h1>
+		  </div>
+		  <div class="card-body">
+		    <h5 class="card-title"></h5>
+		    <p class="card-text"><h2>Upload your images</h2></p>
+		    <a href="{% url 'data:blog' %}" class="btn btn-primary">Click</a>
+		  </div>
+	</div>
+
+	<div class="cards">
+		  <div class="card-header">
+		    <h1>Files</h1>
+		  </div>
+		  <div class="card-body">
+		    <h5 class="card-title"></h5>
+		    <p class="card-text"><h2>Upload any files</h2></p>
+		    <a href="{% url 'data:fpblog' %}" class="btn btn-primary">Click</a>
+		  </div>
+	</div>
+
+	<div class="cards">
+		  <div class="card-header">
+		    <h1>YouVideo</h1>
+		  </div>
+		  <div class="card-body">
+		    <h5 class="card-title"></h5>
+		    <p class="card-text"><h2>youtube video playlist</h2></p>
+		    <a href="{% url 'data:yvideo' %}" class="btn btn-primary">Click</a>
+		  </div>
+	</div>
+
+
+	<div class="cards">
+		  <div class="card-header">
+		    <h1>WIKI</h1>
+		  </div>
+		  <div class="card-body">
+		    <h5 class="card-title"></h5>
+		    <p class="card-text"><h2>Personal Wikipedia</h2></p>
+		    <a href="http://digistorage.herokuapp.com/encyclopedia/" class="btn btn-primary">Click</a>
+		  </div>
+	</div>
+
+	<div class="cards">
+		  <div class="card-header">
+		    <h1>Song Playlist</h1>
+		  </div>
+		  <div class="card-body">
+		    <h5 class="card-title"></h5>
+		    <p class="card-text"><h2>Upload Music</h2></p>
+		    <a href="{% url 'data:pblog' %}" class="btn btn-primary">Click</a>
+		  </div>
+	</div>
+    </center>
+
+		</div>
+		<br><br>
+
+	</div>
+{% endblock  %}

@@ -1,0 +1,81 @@
+<html>
+<title></title>
+<head>
+{% comment %} <meta http-equiv="refresh" content="0;URL='http://www.google.com/'" /> {% endcomment %}
+<meta http-equiv="refresh" content="1200" />
+<style>
+pre{
+    display:inline;
+}
+</style>
+ <script> 
+        function printdiv() { 
+            var divContents = document.getElementById("p").innerHTML; 
+            var a = window.open('', '', 'height=500, width=1000'); 
+            a.document.write('<html>'); 
+           
+            a.document.write(divContents); 
+            a.document.write('</body></html>'); 
+            a.document.close(); 
+            a.print(); 
+        } 
+    </script> 
+</head>
+
+<body>
+<center>
+<fieldset>
+
+<form>
+<input type="text" placeholder="enter total no of question" name="i" >
+</form>
+
+<form action="" method="POST">
+{% csrf_token %}
+
+<input type="text" placeholder="enter class" name="class">
+<input type="text" placeholder="enter subject" name="sub">
+<input type="text" placeholder="enter examination name" name="cn">
+<input type="text" placeholder="maximum marks" name="mm">
+<input type="text" placeholder="duration" name="dur">
+
+<pre><br><br></pre>
+
+<br>
+{%for i in y %}
+<label>Q{{i}}<pre>     </pre></label><input type="text" name="{{i}}">
+<br>
+{%endfor%}
+<button type="submit">Submit</button>
+</form>
+
+</fieldset>
+
+</center>
+
+<pre><br></pre>
+
+{%if la == 1 %}
+<div id="p">
+<fieldset>
+
+<center>
+    <h1 contenteditable="true">DeenBandhu ChottuRam University of Science and Technology</h1>
+    <pre><h2 contenteditable="true">{{cn}}</h2></pre>
+    <pre><h2 contenteditable="true">{{class}}</h2></pre>
+    <hr>
+    <h3  contenteditable="true" style="float:left;margin-left:10%;">M.M:--{{mm}}</h3>
+    <h3 contenteditable="true" style="float:right;margin-right:10%;">duration:--{{dur}}min</h3>
+</center>
+    <pre><br><br><br><br></pre>
+<hr>
+{%for i in l%}
+<h3 contenteditable="true"  style="margin-left:20%;"> {{i}} </h3>
+{%endfor%}
+
+</div>
+<center><input type="button" value="Print" onclick="printdiv()">
+{%endif%}
+
+</body>
+</html>

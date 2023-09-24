@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+*,
+*::before,
+*::after{
+	margin:0;
+	padding:0%;
+	box-sizing:border-box;
+}
+/*100%--16px*/
+html{
+	font-size:62.5%;
+
+}
+.main-div{
+	width:100vw;
+	height:100vh;
+	background-color:#f6f6f6;
+	display:grid;
+	place-items:center;
+/*div ke andar div center me */
+}
+.music-container{
+/*1rem==10px;*/
+width:35rem;
+height:55rem;
+background-color:#ffffff;
+border-radius: 2rem;
+box-shadow:0 1.2rem 3rem 0.5rem rgba(0,0,0,0.2);
+padding:3rem;
+text-align:center;
+}
+
+.music-container #title{
+/*1rem==10px;*/
+text-transform:uppercase;
+letter-spacing:0.2rem;
+word-spacing:0.5rem;
+color:#171717;
+margin:2rem 0 0.5rem 0;
+font-size:2.5rem;
+font-weight:500;
+text-shadow:0 0.3rem 0.5rem rgba(0,0,0,0.3);
+}
+#artist{
+	color:#cccaca;
+	text-transform:uppercase;
+	letter-spacing:0.2rem;
+	word-spacing:0.5rem;
+	font-size:2rem;
+	margin-bottom:4rem;
+	font-weight:300;
+}
+
+.img-container{
+	width:25rem;
+	height:25rem;
+	margin:auto;
+}
+
+img{
+	/*width and height 100% then it take height and width of parent*/
+	width:100%;
+	height:100%;
+	border-radius:50%;
+	object-fit:cover;/*fit ing in parent div*/
+	box-shadow:0 1.2rem 3rem 0.5rem rgba(0,0,0,0.4);
+}
+.music-controls{
+width:20rem;
+display:flex;
+justify-content:space-between;
+margin:auto;
+margin-top:5rem;
+align-items:center;
+}
+.music-controls .fa{
+color:black;
+font-size:2rem;
+cursor:pointer;
+filter:drop-shadow(0 1.2rem 3rem 0.5rem rgba(0,0,0,0.4));
+}
+
+#play{
+width:5rem;
+height:5rem;
+border-radius: 50%;
+background-color:#111;
+color:#f6f6f6;
+display:flex;
+align-items:center;
+justify-content: center;
+font-size:1.4rem;
+}
+
+.music-controls .fa:hover{
+color:grey;
+}
+
+.music-controls #play:hover{
+color:#111;
+background-color: #f6f6f6;
+box-shadow:0 1rem 2rem 0.2rem rgba(0,0,0,0.4);
+}
+.anime{
+	animation:rotate 60s linear infinite;
+}
+@keyframes rotate{
+from{transform :rotate(0deg);}
+to{ transform:rotate(360deg); }
+
+}
+
+
+
+</style>
+</head>
+<body>
+<div class="main-div">
+<h1 id="h1">dk</h1>
+	<div class="music-container">
+	
+		{%for i in sng%}
+        <h2 id="title" >Music</h2>
+		<h3 id="artist">1</h3>
+        <h2 style="display:none;" id="titl" >{{i.pdf}}</h2>
+        <div class="img-container">
+			<img src="https://www.apple.com/ac/structured-data/images/knowledge_graph_logo.png?202001091504" alt="music">
+		</div>
+		<!-- <audio src="m1.mp3" controls ></audio>	 -->
+        
+		<audio src="{{i.pdf.url}}"></audio>
+        {%endfor%}
+		<div class="music-controls">
+			<i class="fa fa-backward" id="prev" title="previous"></i>
+			<i class="fa fa-play" id="play" title="play"></i>
+			<i class="fa fa-forward" id="next" title="next"></i>
+		</div>
+
+	</div>
+</div>
+ 
+
+<script>
+const music=document.querySelector("audio");
+const img=document.querySelector("img");
+const play=document.getElementById("play");
+const prev=document.getElementById("prev");
+const next=document.getElementById("next");
+const title=document.getElementById("title");
+const titl=document.getElementById("titl");
+document.getElementById("h1").innerHTML=titl.textContent;
+let isplay=true;
+let list = new Array();
+{%for i in sngl %}
+list.push(
+	{
+	song:"{{i.pdf.url}}",
+	title:"Mymusic",
+    titl:"{{i.pdf}}",
+	artist:list.length,
+	src:"https://www.apple.com/ac/structured-data/images/knowledge_graph_logo.png?202001091504",
+      },
+);
+{%endfor%}
+// console.log(list[0]);
+let cursong=0;
+const pausem=()=>{
+	isplay=true;
+	music.pause();
+	play.classList.replace("fa-pause","fa-play");
+	 img.classList.remove("anime");
+document.getElementById("h1").innerHTML=titl.textContent;
+}
+
+const playm=()=>{
+	isplay=false;
+	music.play();
+	play.classList.replace("fa-play","fa-pause");
+	img.classList.add("anime");
+document.getElementById("h1").innerHTML=titl.textContent;
+}
+
+
+const playn=()=>{
+
+	cursong=(cursong + 1) % list.length;
+	loadsong(list[cursong]);
+	playm();
+	}
+
+const playp=()=>{
+	cursong=(cursong - 1);
+	if(cursong<0){
+		cursong=list.length-1;
+	}
+	loadsong(list[cursong]);
+    document.getElementById("h1").innerHTML=titl.textContent;
+	playm();
+}
+
+play.addEventListener("click",()=>{
+	if(isplay){
+		playm();
+	}
+	else{
+		pausem();
+	}
+});
+
+const loadsong=(songs)=>{
+	title.textContent=songs.title;
+    titl.textContent=songs.titl;
+	artist.textContent=songs.artist;
+	music.src=songs.song;
+	img.src=songs.src;
+}
+
+next.addEventListener("click",playn);
+prev.addEventListener("click",playp);
+
+</script>
+
+</body>
+</html>

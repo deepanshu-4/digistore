@@ -1,0 +1,17 @@
+{% extends "encyclopedia/layout.html" %}
+{% load static %}
+
+
+{% block title %}
+    Encyclopedia
+{% endblock %} 
+{% block body %}
+ <h1>Related Result</h1>
+
+    <ul>
+        {% for entry in a %}
+           <a href="{% url 'wiki' entry %}"><li>{{ entry }}</li></a>
+        {% endfor %}
+    </ul>
+
+  {% endblock %}

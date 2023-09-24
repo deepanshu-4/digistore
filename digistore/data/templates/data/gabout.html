@@ -1,0 +1,43 @@
+{% extends "data/layout.html" %}
+{% block body %}
+
+<div class="container mt-5">
+     <h2 class="text-center alert alert-danger">Hello {{request.user}} <a href={%url 'data:log_out'%}>Logout</a></h2>
+     <div class="row">
+        
+            {% comment %} {%for i in im%}
+                {% if  i.email == x %} 
+                <h2> {{i.name}} and <br> registration date :- {{i.date}}<h2>
+                {% endif %} 
+
+            {%endfor%} {% endcomment %}
+
+            <div class="row">
+          
+            {% comment %} {%for i in im%}
+                {% if  i.email == x %} 
+                <h2> {{i.name}} and <br> registration date :- {{i.date}}<h2>
+                {% endif %} 
+
+            {%endfor%} {% endcomment %}
+
+            {% comment %} <h3>{{d}}</h3> {% endcomment %}
+                </div>
+            </div>
+
+    <div class="row">
+    
+        <div class="col-sm-12">
+            <button class="btn btn-primary btn-md" onclick="location.href='{% url 'data:blog' %}'" >See and add your images</button><br>       
+            <br>
+            <br>
+                         
+                
+           
+        </div>
+        
+    </div>
+    
+</div>
+</div>
+{% endblock  %}

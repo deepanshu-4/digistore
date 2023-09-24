@@ -1,0 +1,69 @@
+{% extends "data/layout.html" %}
+{% block body %}
+
+<div class="container mt-5">
+     <h2 class="text-center alert alert-danger">Hello {{request.user}} <a href={%url 'data:log_out'%}>Logout</a></h2>
+     <div class="row">
+        
+            {% comment %} {%for i in im%}
+                {% if  i.email == x %} 
+                <h2> {{i.name}} and <br> registration date :- {{i.date}}<h2>
+                {% endif %} 
+
+            {%endfor%} {% endcomment %}
+
+            <div class="row">
+          
+            {% comment %} {%for i in im%}
+                {% if  i.email == x %} 
+                <h2> {{i.name}} and <br> registration date :- {{i.date}}<h2>
+                {% endif %} 
+
+            {%endfor%} {% endcomment %}
+
+            {% comment %} <h3>{{d}}</h3> {% endcomment %}
+                </div>
+            </div>
+
+    <div class="row">
+    
+        <div class="col-sm-12">
+            {% comment %} <button class="btn btn-primary btn-md" onclick="location.href='{% url 'data:blog' %}'" >See and add your images</button><br>       
+            <br>
+            <br> {% endcomment %}
+            <form action="" method="POST"  >
+            {% csrf_token %} 
+            <label  class="text-center alert alert-warning">Add video</label>
+            <input style="width:50%;" type="text" name="vid" placeholder="enter key for e.g tgbNymZ7vqY">   
+                <input  class="btn btn-success" type="submit" value="add" >
+                 </form>
+                         
+                
+           
+        </div>
+        
+    </div>
+    <div  class="row">
+            {%for i in vim%}
+                
+                {% if  i.username == y %} 
+                    <div class="col-sm-6">
+                    
+                   <iframe width="420" height="315"
+                        src="https://www.youtube.com/embed/{{i.video}}">
+                    </iframe>
+                     <form action="{%url 'data:delete' i.id%}" method="POST" class="d-inline">
+                            {%csrf_token%}
+                    <input type="submit" class="btn btn-danger" value="Delete"></a>
+                    </form> 
+ 
+                    </div> 
+                {% endif %} 
+                
+            {%endfor%}
+        
+    </div>
+    
+</div>
+</div>
+{% endblock  %}

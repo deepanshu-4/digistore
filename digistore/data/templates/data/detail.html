@@ -1,0 +1,71 @@
+{% extends 'data/base.html' %}
+
+{% block content %}
+<div id="container">
+
+<a class="previous " href="{%url 'data:blog' %}" >&laquo; Goback</a>
+
+    <form action="{%url 'data:addimage' y %}" method="POST" enctype="multipart/form-data">
+       {% csrf_token %}
+        <input type="file" required name="file">
+        <button  class="btn btn-primary btn-md">Upload Image</button>
+    </form>
+<hr>
+<br>
+
+  <pre> <tr><label>Total images :- </label><td><span class="badge badge-success">{{ln}}</span></td></tr>
+  </pre>
+<div class="con">
+  {% for p in photos %}	
+  {% if yid == p.post.guser %}
+    <div class="cards4"> 
+        <div class="card5">
+	
+        	<img  class="sresponsive" src="{{p.images.url}}"
+              alt="First slide">
+              <table>
+              <tr>
+              <td>
+
+              <form id={{p.id}}  class="d-inline">
+                            {%csrf_token%}
+                    <input type="submit" class="btn btn-danger" value="Delete"></a>    
+              </form> 
+
+              <script type="text/javascript">
+              $(document).on('submit','#{{p.id}}',function(e){
+                e.preventDefault();
+                $.ajax({
+                  type:'POST',
+                  url:"{%url 'data:deleteimage' p.id%}",
+                  data:{
+                    csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                  },
+                  success: function(data){
+                    console.log(data);
+                    $("#container").replaceWith($("#container",$(data)));
+                  }
+                });
+              });
+          </script>
+
+
+
+
+              </td>
+              <td>        
+                     <form action="{%url 'data:addtolist' p.id%}" method="POST" class="d-inline">
+                            {%csrf_token%}
+                      <input type="hidden" value="{{p.images}}" name="shnm"> 
+                    <input type="submit" class="btn btn-info" value="Share"></a>
+                    </form>         
+              </td></tr>
+              </table>      
+        </div>      
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+
+</div>
+  {% endblock %}

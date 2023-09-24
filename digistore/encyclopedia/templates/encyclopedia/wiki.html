@@ -1,0 +1,19 @@
+{% extends "encyclopedia/layout.html" %}
+{% load static %}
+
+
+
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+                {% block body %}
+                <form action="{%url 'edit' title %}">
+                {% comment %} <h1 >{{title}}</h1>
+                <hr>
+                <br> {% endcomment %}
+                <div>{{get|safe}}</div>
+                <button class="btn btn-primary">Edit</button>
+                </form>
+                {% endblock %}

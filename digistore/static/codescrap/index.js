@@ -1,0 +1,105 @@
+$(document).ready(function(){
+   
+    $('#pha').hide();
+    $('#ph').hide();
+    $('#pa').hide();
+    $('#p').hide();
+    $('#lon').hide();
+    $('#lona').hide();
+    $('#lta').hide();
+    $('#lt').hide();
+    $('#c').hide();
+    $('#ca').hide();
+    $('#b1hlta').hide();
+    $('#b1hlt').hide()
+    $('#b1hca').hide()
+    $('#b1hc').hide()
+    $('#b1hla').hide()
+    $('#b1hl').hide()
+$('#psa').click(function(){
+    
+    $('#pa').show();
+    $('#psa').hide();
+    $('#pha').show();
+})   
+$('#ps').click(function(){
+    $('#p').show();
+    $('#ps').hide();
+    $('#ph').show();
+})    
+$('#pha').click(function(){
+    $('#pa').hide();
+    $('#psa').show();
+    $('#pha').hide();
+})    
+$('#ph').click(function(){
+    $('#p').hide();
+    $('#ps').show();
+    $('#ph').hide();
+})    
+$('#b1sla').click(function(){
+    $('#lona').show();
+    $('#b1sla').hide();
+    $('#b1hla').show();
+})
+$('#b1hla').click(function(){
+    $('#lona').hide();
+    $('#b1sla').show();
+    $('#b1hla').hide();
+})
+
+$('#b1sl').click(function(){
+    $('#lon').show();
+    $('#b1sl').hide();
+    $('#b1hl').show();
+})
+$('#b1hl').click(function(){
+    $('#lon').hide();
+    $('#b1sl').show();
+    $('#b1hl').hide();
+})
+
+$('#b1slta').click(function(){
+    $('#lta').show();
+    $('#b1slta').hide();
+    $('#b1hlta').show();
+})
+
+$('#b1hlta').click(function(){
+    $('#lta').hide();
+    $('#b1slta').show();
+    $('#b1hlta').hide();
+})
+$('#b1slt').click(function(){
+    $('#lt').show();
+    $('#b1slt').hide();
+    $('#b1hlt').show();
+})
+$('#b1hlt').click(function(){
+    $('#lt').hide();
+    $('#b1slt').show();
+    $('#b1hlt').hide();
+})
+$('#b1sc').click(function(){
+    $('#c').show();
+    $('#b1sc').hide();
+    $('#b1hc').show();
+})
+$('#b1hc').click(function(){
+    $('#c').hide();
+    $('#b1sc').show();
+    $('#b1hc').hide();
+})
+
+$('#b1sca').click(function(){
+    $('#ca').show();
+    $('#b1sca').hide();
+    $('#b1hca').show();
+})
+$('#b1hca').click(function(){
+    $('#ca').hide();
+    $('#b1sca').show();
+    $('#b1hca').hide();
+})
+
+})
